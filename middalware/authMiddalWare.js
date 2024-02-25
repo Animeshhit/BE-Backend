@@ -7,10 +7,14 @@ const authenticateTokenAndFindUser = (req, res, next) => {
   try {
     let user = null;
     //getting the token from headers
-    const token = req.header("Authorization");
+    const token = req.header("Authorization").split(" ")[1];
+    if (token == undefined || token == null) {
+      return res.status(403).json({ message: "unAuth" });
+    }
     //getting the data that are being stored into the database
     jwt.verify(token, jwtsecret, async (err, decoded) => {
       if (err) {
+        console.log(err);
         return res.status(500).json({ message: "something went wrong" });
       }
 
@@ -26,13 +30,16 @@ const authenticateTokenAndFindUser = (req, res, next) => {
       if (!user.devices.includes(token)) {
         return res.status(403).json({ message: "You are not LoggedIn" });
       }
-      req.user = user;
+      req.user = {
+        data: user,
+        device: decoded.device,
+      };
       next();
     });
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: "something went wrong",
+      message: "something went wrong err2",
     });
   }
 };

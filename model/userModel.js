@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     require: [true, "PhoneNumber Is Required"],
     unique: true,
     min: [10, "Phone Number should be in 10 digits"],
-    max: [10, "Phone Number can't be greater then 10 digits"],
   },
   email: {
     type: String,

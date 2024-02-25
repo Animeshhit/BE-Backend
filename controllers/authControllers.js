@@ -57,7 +57,7 @@ const RegisterUser = async (req, res) => {
         savedUser.password = undefined;
         savedUser.devices = undefined;
         //sending the request to the frontend
-        res.json({
+        res.status(201).json({
           message: "user Registered Successfully",
           user: savedUser,
           token,
@@ -169,8 +169,8 @@ const LoginUserFromPhone = async (req, res) => {
 
 const GetUser = async (req, res) => {
   try {
-    req.user.password = undefined;
-    req.user.devices = undefined;
+    req.user.data.password = undefined;
+    req.user.data.devices = undefined;
     res.status(200).json({
       user: req.user,
     });
