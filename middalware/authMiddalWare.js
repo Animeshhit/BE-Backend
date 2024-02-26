@@ -44,4 +44,4 @@ const authenticateTokenAndFindUser = (req, res, next) => {
   }
 };
 
-module.exports = authenticateTokenAndFindUser;
+module.exports = { authenticateTokenAndFindUser };

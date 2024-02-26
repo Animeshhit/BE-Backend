@@ -2,7 +2,7 @@ const express = require("express");
 const connectToDataBase = require("./db/db");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const authRouter = require("./routes/authentications/route");
+const authRouter = require("./routes/authentications/route.js");
 
 //microprocesser
 //scaling

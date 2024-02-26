@@ -6,7 +6,9 @@ const {
   LoginUserFromPhone,
   GetUser,
 } = require("../../controllers/authControllers");
-const authenticateTokenAndFindUser = require("../../middalware/authMiddalware");
+const {
+  authenticateTokenAndFindUser,
+} = require("../../middalware/authMiddalWare");
 
 Router.post("/register", RegisterUser);
 Router.post("/login/email", LoginUserFromEmail);
