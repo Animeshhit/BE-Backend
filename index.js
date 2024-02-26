@@ -3,6 +3,7 @@ const connectToDataBase = require("./db/db");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const authRouter = require("./routes/authentications/route.js");
+const contactRouter = require("./routes/contact/route.js");
 
 //microprocesser
 //scaling
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v2", authRouter);
+app.use("/api/v2", contactRouter);
 
 connectToDataBase((isConnected) => {
   if (isConnected) {

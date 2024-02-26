@@ -14,8 +14,7 @@ const authenticateTokenAndFindUser = (req, res, next) => {
     //getting the data that are being stored into the database
     jwt.verify(token, jwtsecret, async (err, decoded) => {
       if (err) {
-        console.log(err);
-        return res.status(500).json({ message: "something went wrong" });
+        return res.status(500).json({ message: "unAuth token" });
       }
 
       if (decoded.phone) {
