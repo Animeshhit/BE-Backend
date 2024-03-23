@@ -13,6 +13,10 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: [true, "Mesage is Required"],
   },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const Contact = new mongoose.model("contact", contactSchema);
